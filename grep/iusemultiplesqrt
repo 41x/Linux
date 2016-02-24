@@ -1,0 +1,4 @@
+double iusemultiplesqrt(double k){
+	double s=sqrt(k);s=sqrt(s);s=sqrt(12);
+	return sqrt(s);
+}

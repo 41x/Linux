@@ -1,0 +1,9 @@
+BEGIN{
+	sum=0;
+}
+{
+	sum+=$2;
+}
+END{
+	printf("%s\nAverage:%f\n",FILENAME,sum/NR);
+}
