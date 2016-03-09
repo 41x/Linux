@@ -8,8 +8,20 @@ do
  read reply;
  case $reply in
     1) echo `ls`;;
-    2) echo "enter name:" && read name && rm -R "$name";;
-    3) echo "enter name:" && read name && echo "enter new name:" && read name2 && mv "$name" "$name2";;
+    2) echo "enter name:" && read name &&  $([ -e "$name" ] || [ -d "$name" ]) && rm -R "$name" || echo "Такого 
+файла/папки нет";;
+    3) echo "enter name:"
+       read name
+       echo "enter new name:" 
+       read name2
+       if [ ! -e "$name" ] && [ ! -d "$name" ]; then
+        echo "Такой папки/файла нет"
+       elif [ "$name" == "$name2" ]; then
+        echo "Новое и старое имена совпадают"
+       else
+        mv "$name" "$name2"
+       fi
+       ;;
     4) exit;;
  esac 
 done
